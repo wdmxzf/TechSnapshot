@@ -251,28 +251,28 @@ JavaWeb当中包含四大域对象。
 
 * 可以配置公共的初始化参数为所有servlet来用，这需要使用servletContext才能获取。
 
-  ![Snip20180509_9](/LZMac/Personal/Learn/笔记/assets/Snip20180509_9.png)
+  ![Snip20180509_9](./assets/Snip20180509_9.png)
 
 
 
 ###### 获取资源相关方法
 
-![Snip20180509_10](/LZMac/Personal/Learn/笔记/assets/Snip20180509_10.png)
+![Snip20180509_10](./assets/Snip20180509_10.png)
 
 可以用它获取资源路径。
 
-![Snip20180509_12](/LZMac/Personal/Learn/笔记/assets/Snip20180509_12.png)
+![Snip20180509_12](./assets/Snip20180509_12.png)
 
 
 
-###### 访问量统计![Snip20180509_13](/LZMac/Personal/Learn/笔记/assets/Snip20180509_13.png)
+###### 访问量统计![Snip20180509_13](./assets/Snip20180509_13.png)
 
 ###### 获取类路径下资源
 
 * Class
 * ClassLoader
 
-类路径对于JavaWeb而言就是/WEB-INF/classes 和 /WEB_INF/lib/每个jar包。![Snip20180509_17](/LZMac/Personal/Learn/笔记/assets/Snip20180509_17.png)
+类路径对于JavaWeb而言就是/WEB-INF/classes 和 /WEB_INF/lib/每个jar包。![Snip20180509_17](./assets/Snip20180509_17.png)
 
 
 
@@ -282,7 +282,7 @@ JavaWeb当中包含四大域对象。
 
 ### **7.1请求响应流程图** 
 
-![image-20180514210414810](/LZMac/Personal/Learn/笔记/assets/image-20180514210414810.png)
+![image-20180514210414810](./assets/image-20180514210414810.png)
 
 
 
@@ -313,7 +313,7 @@ http协议中响应的内容包含哪些东西呢？
 
   * 响应头：Content-Type、Refresh、Location等等
 
-        
+    ​    
 
       头就是一个键值对！可能会存在一个头（一个名称，一个值），也可能会存在多个头（一个名称，多个值！）
 
@@ -351,7 +351,7 @@ http协议中响应的内容包含哪些东西呢？
   * 重定向：设置302，设置Location！其中变化的只有Location，所以java提供了一个快捷方法，完成重定向！
 　　　> sendRedirect(String location)方法
 
-![重定向](/LZMac/Personal/Learn/笔记/assets/重定向.jpg)
+![重定向](./assets/重定向.jpg)
 
 ### 7.3 Request
 
@@ -406,7 +406,7 @@ request --> 封装了客户端所有的请求数据！
 
   * 请求转发和请求包含
 
-      ![请求转发和请求包含是一个请求](/LZMac/Personal/Learn/笔记/assets/请求转发和请求包含是一个请求.jpg)
+      ![请求转发和请求包含是一个请求](./assets/请求转发和请求包含是一个请求.jpg)
 
       　　RequestDispatcher rd = request.getRequestDispatcher("/MyServlet");  使用request获取RequestDispatcher对象，方法的参数是被转发或包含的Servlet的Servlet路径
       　　　　请求转发：rd.forward(request,response);
@@ -446,13 +446,13 @@ request --> 封装了客户端所有的请求数据！
 
 　　常见字符编码：**iso-8859-1**(不支持中文)、gb2312、gbk、gb18030(系统默认编码，中国的国标码)、utf-8(万国码，支持全世界的编码，所以我们使用这个)
 
-1. 响应编码![响应编码](/LZMac/Personal/Learn/笔记/assets/响应编码.jpg)
+1. 响应编码![响应编码](./assets/响应编码.jpg)
   * 当使用response.getWriter()来向客户端发送字符数据时，如果在之前没有设置编码，那么默认使用iso，因为iso不支持中文，一定乱码
   * 在使用response.getWriter()之前可以使用response.setCharaceterEncoding()来设置字符流的编码为gbk或utf-8，当然我们通常会选择utf-8。这样使用response.getWriter()发送的字符就是使用utf-8编码的。但还是会出现乱码！因为浏览器并不知道服务器发送过来的是什么编码的数据！这时浏览器会使用gbk来解码，所以乱码！
   * 在使用response.getWriter()之前可以使用response.setHeader("Content-type","text/html;charset=utf-8")来设置响应头，通知浏览器服务器这边使用的是utf-8编码，而且在调用setHeader()后，还会自动执行setCharacterEncding()方法。这样浏览器会使用utf-8解码，所以就不会乱码了！
   * setHeader("Content-Type", "text/html;charset=utf-8")的快捷方法是：setContentType("text/html;charset=utf-8)。
 2. 请求编码
-![请求编码-7060608](/LZMac/Personal/Learn/笔记/assets/请求编码-7060608.jpg)
+![请求编码-7060608](./assets/请求编码-7060608.jpg)
 
   * 客户端发送给服务器的请求参数是什么编码：
       　　客户端首先要打开一个页面，然后在页面中提交表单或点击超链接！在请求这个页面时，服务器响应的编码是什么，那么客户端发送请求时的编码就是什么。
@@ -472,7 +472,7 @@ request --> 封装了客户端所有的请求数据！
 
 3. URL编码
 
-![URL编码-7060594](/LZMac/Personal/Learn/笔记/assets/URL编码-7060594.jpg)
+![URL编码-7060594](./assets/URL编码-7060594.jpg)
 
 表单的类型：Content-Type: application/x-www-form-urlencoded，就是把中文转换成%后面跟随两位的16进制。
 　　为什么要用它：在客户端和服务器之间传递中文时需要把它转换成网络适合的方式。
@@ -534,7 +534,7 @@ request --> 封装了客户端所有的请求数据！
 
 ### 8.2 jsp和Servlet的分工
 
-![JSP和Servlet分工-7486103](/LZMac/Personal/Learn/笔记/assets/JSP和Servlet分工-7486103.jpg)
+![JSP和Servlet分工-7486103](./assets/JSP和Servlet分工-7486103.jpg)
 
 * JSP：
   > 作为请求发起页面，例如显示表单、超链接。
@@ -562,7 +562,7 @@ request --> 封装了客户端所有的请求数据！
 
 ### 8.4 jsp原理
 
-![第一次访问JSP流程图](/LZMac/Personal/Learn/笔记/assets/第一次访问JSP流程图.jpg)
+![第一次访问JSP流程图](./assets/第一次访问JSP流程图.jpg)
 
 
 
@@ -658,7 +658,7 @@ if(cs != null) {
 
 #### 8.6.4 案例2：演示保存用户登录信息（精通）
 
-![保存登录名](/LZMac/Personal/Learn/笔记/assets/保存登录名.jpg)
+![保存登录名](./assets/保存登录名.jpg)
 
 * 案例相关页面和Servlet：
   > login.jsp：登录页面
@@ -677,7 +677,7 @@ if(cs != null) {
 
 #### 8.6.5 HttpSession原理（理解）
 
-![session原理](/LZMac/Personal/Learn/笔记/assets/session原理.jpg)
+![session原理](./assets/session原理.jpg)
 
 * request.getSession()方法：
   > 获取Cookie中的JSESSIONID：
